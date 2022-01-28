@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Array JS</title>
+</head>
+<body>
+<p id="d_array">data</p>
+<input type="text" id="txt_input"><br><br>
+<button id="b_tambah" onclick="tambahdata()">Tambah</button><br><br>
+<select id="my_select">
+	<option>Pilihan</option>
+</select><br><br>
+<button id="b_hapus" onclick="hapusdata()">Hapus</button>
+
+<script type="text/javascript">
+	const a_data = ["toyota","daihatsu","mitsubishi"];
+	document.getElementById("d_array").innerHTML = a_data;
+	displayselect();
+
+	function tambahdata(){
+		var a = document.getElementById("txt_input").value;
+		a_data.push(a);
+		document.getElementById("d_array").innerHTML = a_data;
+
+	    var b = document.getElementById("my_select");
+	    var option = document.createElement("option");
+	    option.text = a;
+	    b.add(option);
+	}
+	function displayselect(){
+		var select = document.getElementById("my_select");
+		for (var i = 0; i < a_data.length; i++) {
+                var optn = a_data[i];
+                var ele = document.createElement("option");
+                ele.textContent = optn;
+                ele.value = optn;
+                select.appendChild(ele);
+            }
+	}
+	function hapusdata(){
+		var x = document.getElementById("my_select").value;
+		let dataindex = a_data.indexOf(x);
+		var hapus = a_data.splice(dataindex,1);
+		console.log(hapus);
+		document.getElementById("d_array").innerHTML = a_data;
+	}
+</script>
+</body>
+</html>
